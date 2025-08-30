@@ -1,0 +1,28 @@
+# Load the necessary libraries
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+# Read the CSV file
+df <- read_csv("cleaned_climate_data.csv")
+
+# Group by week and station and calculate the average rainfall
+average_rainfall_by_week_and_id <- df %>%
+  group_by(week, mount_id) %>%
+  summarise(
+    average_rain = mean(rain, na.rm = TRUE)
+  )
+
+# Create a bar chart to visualise the average rainfall for all stations
+ggplot(average_rainfall_by_week_and_id, aes(x = as.factor(week), y = average_rain, fill = as.factor(mount_id))) +
+  geom_bar(stat = "identity", alpha = 0.6) +
+  labs(
+    title = "Average Rainfall by Week for All Mountains",
+    x = "Week",
+    y = "Average Rainfall (mm)",
+    fill = "Station Number"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
