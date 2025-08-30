@@ -1,0 +1,15 @@
+mountain resort,accommodation,accommodation rating,price (7 days),distance from centre/lift (m)
+Mount Baw Baw,Altitude apartment1,7.4,3229,850
+Mount Baw Baw,Tanjil Creek Lodge,8.7,2455,1200
+Mt Stirling,Stirling Hotel,9.1,5175,250
+Mt Hotham,Chalet Hotham1,9.7,6370,400
+Falls Creek,Huski Apartments Falls Creek,9.0,5026,250
+Falls Creek,Diana Alpine Lodge,9.3,5873,100
+Falls Creek,Kilimanjaro Alpine Apartment,9.0,4888.80,250
+Mt Buller,Nutcracker Ski Club,8.3,4270,500
+Thredbo,Powder 2B Thredbo,9.0,6197.80,700
+Thredbo,House of Ullr,8.0,3151.40,250
+Thredbo,Ramshead Creek 3,8.6,4456.20,550
+Perisher,Boonoona Ski Lodge,9.3,5467,350
+Perisher,Kooloora Lodge,9.7,6720,550
+Perisher,The perisher valley hotel,9.0,8960,1400
