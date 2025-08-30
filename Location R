@@ -1,0 +1,40 @@
+data <- data.frame(
+  Location = c("Mt. Baw Baw", "Mt. Buller", "Mt. Stirling", "Mt. Hotham", "Falls Creek", "Selwyn", "Thredbo", "Perisher", "Charlotte Pass"),
+  Distance = c(177, 257, 262, 376, 386, 539, 548, 608, 614),
+  Time_taken = c(3.00, 3.50, 4.00, 4.75, 4.83, 6.25, 6.75, 7.50, 7.83)
+)
+
+# Create the scatter plot
+plot(data$Distance, data$Time_taken,
+     main = "Travel Time vs. Distance from CBD",
+     xlab = "Distance from CBD (km)",
+     ylab = "Time Taken (hours)",
+     pch = 19,
+     col = "blue",
+     xlim = c(min(data$Distance) - 50, max(data$Distance) + 50),
+     ylim = c(min(data$Time_taken), max(data$Time_taken) + 0.5)
+)
+
+# Linear regression line
+abline(lm(Time_taken ~ Distance, data = data), col = "red")
+
+# Indices for Mt. Hotham and Falls Creek.
+# Fix this as they overlap
+hotham_index <- which(data$Location == "Mt. Hotham")
+falls_creek_index <- which(data$Location == "Falls Creek")
+
+# Add a text label for Mt. Hotham, with a manual offset to the left and down
+text(data$Distance[hotham_index], data$Time_taken[hotham_index],
+     labels = data$Location[hotham_index],
+     pos = 2, offset = 0.5, cex = 0.7)
+
+# Add a text label for Falls Creek, with a manual offset to the right and up
+text(data$Distance[falls_creek_index], data$Time_taken[falls_creek_index],
+     labels = data$Location[falls_creek_index],
+     pos = 4, offset = 0.5, cex = 0.7)
+     
+
+other_indices <- ! (data$Location %in% c("Mt. Hotham", "Falls Creek"))
+text(data$Distance[other_indices], data$Time_taken[other_indices],
+     labels = data$Location[other_indices],
+     pos = 4, offset = 0.5, cex = 0.7)
