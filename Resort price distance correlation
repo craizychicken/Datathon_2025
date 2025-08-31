@@ -1,0 +1,27 @@
+library(ggplot2)
+
+df <- read.csv("resort_data.csv")
+
+correlation <- cor(df$Price, df$DistanceFromCentre_m, method = "pearson", use = "pairwise.complete.obs")
+
+correlation_label <- paste("Correlation (r) = ", round(correlation, 2))
+
+ggplot(df, aes(x = Price, y = DistanceFromCentre_m)) +
+  
+  geom_point(color = "forestgreen", size = 3, alpha = 0.8) +
+  
+  geom_smooth(method = "lm", se = FALSE, color = "blue", linetype = "dashed", na.rm = TRUE) +
+  
+  labs(
+    title = "Correlation Plot of Price vs. Distance from Centre",
+    subtitle = "Lower-priced resorts tend to be farther from the centre",
+    x = "Price ($)",
+    y = "Distance from Centre (m)"
+  ) +
+  
+  annotate("text", x = min(df$Price) + 1000, y = max(df$DistanceFromCentre_m) - 200, 
+           label = correlation_label, color = "blue", size = 5) +
+  
+  theme_minimal() + 
+  
+  theme(plot.title = element_text(hjust = 0.5))
